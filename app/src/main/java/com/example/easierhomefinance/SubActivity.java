@@ -40,7 +40,7 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        singleton = Singleton.getInstance();
+        singleton = Singleton.getInstance(this);
 
         amount = (TextView)findViewById(R.id.amount);
         balance = (TextView)findViewById(R.id.balance);
@@ -48,8 +48,10 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         mydb = new DBHelper(this);
         Toast.makeText(SubActivity.this, ""+mydb.numberOfRows(), Toast.LENGTH_SHORT).show();
 
+        // 여기 아랫부분은 싱글톤인스턴스로부터 가져오게 바꾸깅
+        //singleton.
         for (int i=0; i < mydb.numberOfRows(); i++) {
-            Cursor rs = mydb.getDatabyid(i+1);    /////////////////////////////////////
+            Cursor rs = mydb.getDatabyid(i+1);
             rs.moveToFirst();
             String n = rs.getString(rs.getColumnIndex(DBHelper.HF_COLUMN_AMOUNT));
 

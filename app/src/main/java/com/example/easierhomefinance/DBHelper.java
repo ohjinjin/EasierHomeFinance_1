@@ -60,24 +60,17 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList getDatabydate(String date){
-        /* db=this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from HomeFinance where date ="+date+"",null);
-
-
-        return res;*/
         ArrayList arrayList = new ArrayList();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("select * from HomeFinance",null);
         res.moveToFirst();
         while (res.isAfterLast()==false){
-            //Log.e(this.getClass().getName(),res.getString(res.getColumnIndex(HF_COLUMN_DATE))+"compare~"+date);
             if (res.getString(res.getColumnIndex(HF_COLUMN_DATE)).equals(date)) {
                 arrayList.add(res);
-                //Log.e(this.getClass().getName(), res.getString(res.getColumnIndex(DBHelper.HF_COLUMN_AMOUNT))+"?>???????");
             }
             res.moveToNext();
         }
-        return arrayList;   //커서들의 배열을 반환하도록
+        return arrayList;   //커서들의 리스트를 반환하도록
     }
 
     public int numberOfRows(){

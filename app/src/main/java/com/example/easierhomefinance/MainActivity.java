@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Log.d("ACTIVITY_LC","onCreate 호출됨");
 
-        singleton = Singleton.getInstance();
+        singleton = Singleton.getInstance(this);
 
         mydb = new DBHelper(this);
 
@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
         mydb.deleteHistory(2);
         mydb.deleteHistory(3);
         mydb.insertHistory("20190111", 1, 0, 0, 5000);
-
-        //ArrayList arrayList = mydb.getAllHistory();
 
         Button button = (Button)findViewById(R.id.newActivity);
         button.setOnClickListener(new View.OnClickListener(){
