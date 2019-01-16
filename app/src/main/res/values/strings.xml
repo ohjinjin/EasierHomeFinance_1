@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">EasierHomeFinance</string>
+    <string name="title_activity_sub">SubActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="classification">분류</string>
+    <string-array name="classification">
+        <item>주거비</item>
+        <item>통신비</item>
+        <item>식비</item>
+        <item>생필품</item>
+        <item>교육비</item>
+        <item>교통비</item>
+        <item>교육비</item>
+        <item>의류비</item>
+        <item>차량유지비</item>
+        <item>문화비</item>
+        <item>의료비</item>
+        <item>미용비</item>
+    </string-array>
 </resources>
