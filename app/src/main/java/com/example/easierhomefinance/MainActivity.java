@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         mydb.deleteHistory(3);
         mydb.insertHistory("20190111", 1, 0, 0, 5000);
 
+
         Button button = (Button)findViewById(R.id.newActivity);
         button.setOnClickListener(new View.OnClickListener(){
 

@@ -30,11 +30,14 @@ public class InsertActivity extends AppCompatActivity implements View.OnClickLis
     RadioButton save;
     TextView amount;
     int id = 0;
+    Singleton singleton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert);
+
+        singleton = Singleton.getInstance(this);
 
         Spinner spinner = (Spinner)findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -120,8 +123,10 @@ public class InsertActivity extends AppCompatActivity implements View.OnClickLis
         int tmp2 = expense.isChecked()?1:0;
         int tmp3 = save.isChecked()?1:0;
 
+        //singleton.insertData(date.getText().toString(),tmp1,tmp2,tmp3,Integer.parseInt(amount.getText().toString()));
+
         //Log.e(this.getClass().getName(),"testttttttttttttttttttttttttttttttttttttt44"+s1+s2);//+(date.getText().toString())+" bools : "+tmp1+" "+tmp2+" "+ tmp3+" "+Integer.parseInt(amount.getText().toString()));
-        if (mydb.insertHistory(date.getText().toString(),tmp1,tmp2,tmp3,Integer.parseInt(amount.getText().toString()))){
+        if (singleton.insertData(date.getText().toString(),tmp1,tmp2,tmp3,Integer.parseInt(amount.getText().toString()))){
             Toast.makeText(getApplicationContext(),"저장되었습니다.",Toast.LENGTH_SHORT).show();
         }
         else{

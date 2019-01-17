@@ -112,4 +112,13 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return arrayList;
     }
+
+    public int getLastId(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        //Cursor res = db.rawQuery("select * from HomeFinance order by id limit 1;",null);
+        Cursor res = db.rawQuery("select * from HomeFinance",null);
+        res.moveToPosition(res.getCount() - 1);
+
+        return res.getInt(res.getColumnIndex(DBHelper.HF_COLUMN_ID));
+    }
 }
