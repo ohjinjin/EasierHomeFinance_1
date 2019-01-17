@@ -100,35 +100,35 @@ public class SubActivity extends AppCompatActivity implements View.OnClickListen
         Log.w(this.getClass().getName(),"testttttttttttttt");Log.e(this.getClass().getName(),"testttttttttttttttttttttttttttttttttttttt");
 */
         // 선택된 날짜얻어오기~~~->날짜 변경 이벤트가 있을때마다 이거 실행되도록 구현해보자ok
-        final DateFormat dateFormatMonth = new SimpleDateFormat("yyyyMM");
-        final DateFormat dateFormatDay = new SimpleDateFormat("yyyyMMdd");
+        final DateFormat dateMonth = new SimpleDateFormat("yyyyMM");
+        //final DateFormat dateDay = new SimpleDateFormat("yyyyMMdd");
         final CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
         //Log.e(this.getClass().getName(),"testttttttttttttttttttttttttttttttttttttt1"+dateFormatMonth.format(calendar.getDate()));
         //final Date curDate = new Date(calendar.getDate());
         //Log.e(this.getClass().getName(),curDate+"ccccccccccccccddddddddddd");
 
-        singleton.getMonthlyBalance(dateFormatMonth.format(calendar.getDate()));
-        singleton.getMonthlyIncome(dateFormatMonth.format(calendar.getDate()));
-        singleton.getMonthlyExpense(dateFormatMonth.format(calendar.getDate()));
-        singleton.getMonthlySave(dateFormatMonth.format(calendar.getDate()));
+        singleton.getMonthlyBalance(dateMonth.format(calendar.getDate()));
+        singleton.getMonthlyIncome(dateMonth.format(calendar.getDate()));
+        singleton.getMonthlyExpense(dateMonth.format(calendar.getDate()));
+        singleton.getMonthlySave(dateMonth.format(calendar.getDate()));
 
         //Log.e(this.getClass().getName(),"testttttttttttttttttttttttttttttttttttttt1"+dateFormat.format(calendar.getDate()));
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month,int dayOfMonth) {
 
-                String date = String.format("%04d",year)+String.format("%02d",month+1)+String.format("%02d",dayOfMonth);
-                singleton.getDailyBalance(date);
-                singleton.getDailyIncome(date);
-                singleton.getDailyExpense(date);
-                singleton.getDailySave(date);
+                String dateDay = String.format("%04d",year)+String.format("%02d",month+1)+String.format("%02d",dayOfMonth);
+                singleton.getDailyBalance(dateDay);
+                singleton.getDailyIncome(dateDay);
+                singleton.getDailyExpense(dateDay);
+                singleton.getDailySave(dateDay);
 
                 Bundle bundle = new Bundle();
-                bundle.putString("date",date);
+                bundle.putString("date",dateDay);
                 Intent intent = new Intent(getApplicationContext(),ListActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
-                Toast.makeText(SubActivity.this, date, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SubActivity.this, dateDay, Toast.LENGTH_SHORT).show();
                 //intent로 상세내역페이지 만들어줄거야~~
             }
         });
